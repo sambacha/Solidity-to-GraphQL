@@ -4,9 +4,8 @@
   "description": "Create a graphql server to Ethereum smart contracts",
   "main": "lib/index.js",
   "scripts": {
-    "start": "node server.js",
-    "build-sc": "truffle migrate --network development --reset",
-    "test": "jest test/*",
+    "start": "node aion-server.js",
+    "test": "mocha test/aion.test.js",
     "lint": "eslint ."
   },
   "repository": {
@@ -28,7 +27,15 @@
   },
   "homepage": "https://github.com/hellosugoi/Ethereum-to-GraphQL#readme",
   "dependencies": {
+    "aion-web3": "^0.0.3",
+    "apollo-server": "^2.0.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-es2016": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "chai": "^4.1.2",
     "graphql": "^0.10.0",
+    "mocha": "^5.2.0",
     "web3": "^0.19.1"
   },
   "devDependencies": {
