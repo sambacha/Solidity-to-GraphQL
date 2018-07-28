@@ -2,10 +2,6 @@
 
 This will consume an ABI object created when deploying a Solidity Smart contract, and return a graphql schema and resolver. This object can be plugged into a the graphql server of your choice.
 
-# Important Note :
-
-This repository extends [Ethereum-to-GraphQ](https://github.com/hellosugoi/Ethereum-to-GraphQL/) by Angello Pozo.
-
 # Usage:
 
 Checkout the example in file `aion-server.js` and `aion.test.js` under test folder.
@@ -139,3 +135,7 @@ raw
 ]
 }
 }
+
+## Important Note :
+
+This repository is forked from [Ethereum-to-GraphQ](https://github.com/hellosugoi/Ethereum-to-GraphQL/) by Angello Pozo.
