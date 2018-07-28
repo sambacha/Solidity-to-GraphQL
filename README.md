@@ -4,6 +4,17 @@ This will consume an ABI object created when deploying a Solidity Smart contract
 
 # Usage:
 
+Install the package with npm or yarn.
+
+npm install aion-to-graphql
+yarn add aion-to-graphql
+
+Once installed, you have to create your own graphql server. This means you pass in the Abi and contract instance.
+Example:
+`{ artifact: abi, contract: web3.eth.contract(abi).at(address) }`
+
+This package will retrun the schema and rootValue that you can pass into your GraphQL server.
+
 Checkout the example in file `aion-server.js` and `aion.test.js` under test folder.
 These examples demonstrates how to interact with a basic set and get Smart contract using GQL queries and mutations.
 
