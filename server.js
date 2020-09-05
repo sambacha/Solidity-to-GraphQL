@@ -7,7 +7,9 @@ const graphqlHTTP = require('express-graphql')
 
 const Web3 = require('web3')
 const provider = new Web3.providers.HttpProvider('http://localhost:9545')
-const TFcontract = require('truffle-contract')
+// const TFcontract = require('truffle-contract')
+
+const TFcontract = require('@truffle/contract')
 const MetaCoinArtifact = require('./build/contracts/Metacoin')
 const MetCoinContract = TFcontract(MetaCoinArtifact)
 MetCoinContract.setProvider(provider)

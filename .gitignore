@@ -1,3 +1,6 @@
 node_modules/*
-.ds_store
+.DS_Store
 build/*
+*.tgz
+*.tar.gz
+*.zip
