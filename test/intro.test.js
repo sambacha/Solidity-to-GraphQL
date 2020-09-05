@@ -5,13 +5,13 @@ const MetaCoinArtifact = require('../build/contracts/Metacoin')
 const MetaCoinContract = TFcontract(MetaCoinArtifact)
 const Web3 = require('web3')
 
-MetaCoinContract.setProvider(new Web3.providers.HttpProvider('http://localhost:9545'))
+MetaCoinContract.setProvider(new Web3.providers.HttpProvider('http://localhost:8545'))
 const contractOwner = '0x8B5D608836459Ddb0725C64036569c7630a82FBF' // 0 address with mneonic of "lol dude" in ganache
 
 const { genGraphQlProperties } = require('../lib/index')
 const { schema, rootValue } = genGraphQlProperties({ artifact: MetaCoinArtifact, contract: MetaCoinContract })
 
-it('should succesfully query a public uint value', async () => {
+it('should successfully query a public uint value', async () => {
   const query = `
     query {
       publicUint {
@@ -33,7 +33,7 @@ it('should succesfully query a public uint value', async () => {
   })
 })
 
-it('should succesfully query a source string value', async () => {
+it('should successfully query a source string value', async () => {
   const query = `
     query {
       source {
@@ -50,7 +50,7 @@ it('should succesfully query a source string value', async () => {
   })
 })
 
-it('should succesfully query getBalance', async () => {
+it('should successfully query getBalance', async () => {
   const query = `
   query {
     getBalance(addr: "0x7b2c6c6e9026bcef8df4df3ff888b72b018f0e8a") {
@@ -72,7 +72,7 @@ it('should succesfully query getBalance', async () => {
   })
 })
 
-it('should succesfully query getBalanceInEth', async () => {
+it('should successfully query getBalanceInEth', async () => {
   const query = `
   query {
     getBalanceInEth(addr: "0x7b2c6c6e9026bcef8df4df3ff888b72b018f0e8a") {
@@ -95,7 +95,7 @@ it('should succesfully query getBalanceInEth', async () => {
   })
 })
 
-it('should succesfully query returns3 with multiple outputs', async () => {
+it('should successfully query returns3 with multiple outputs', async () => {
   const query = `
   query {
     returns3 {
@@ -128,7 +128,7 @@ it('should succesfully query returns3 with multiple outputs', async () => {
   })
 })
 
-it('should succesfully query returns2 with multiple inputs/outputs', async () => {
+it('should successfully query returns2 with multiple inputs/outputs', async () => {
   const query = `
   query {
     returns2(addr: "0x7b2c6c6e9026bcef8df4df3ff888b72b018f0e8d" num: 1) {
@@ -153,7 +153,7 @@ it('should succesfully query returns2 with multiple inputs/outputs', async () =>
   })
 })
 
-it('should succesfully query returnsSingleUint8', async () => {
+it('should successfully query returnsSingleUint8', async () => {
   const query = `
   query {
     returnsSingleUint8 {
@@ -176,11 +176,11 @@ it('should succesfully query returnsSingleUint8', async () => {
   })
 })
 
-it('should succesfully query returnsNamedInt', async () => {
+it('should successfully query returnsNamedInt', async () => {
   const query = `
   query {
     returnsNamedInt {
-      tweleve {
+      twelve {
         string
         int
       }
@@ -191,7 +191,7 @@ it('should succesfully query returnsNamedInt', async () => {
   // console.log(JSON.stringify(result.data, null, 2))
   expect(result.data).toEqual({
     'returnsNamedInt': {
-      'tweleve': {
+      'twelve': {
         'string': '12',
         'int': 12
       }
@@ -199,7 +199,7 @@ it('should succesfully query returnsNamedInt', async () => {
   })
 })
 
-it('should succesfully query returnsMixedNamedInt', async () => {
+it('should successfully query returnsMixedNamedInt', async () => {
   const query = `
   query {
     returnsMixedNamedInt {
@@ -230,7 +230,7 @@ it('should succesfully query returnsMixedNamedInt', async () => {
   })
 })
 
-it('should succesfully query returnsaddress', async () => {
+it('should successfully query returnsaddress', async () => {
   const query = `
   query {
     returnsaddress {
@@ -247,7 +247,7 @@ it('should succesfully query returnsaddress', async () => {
   })
 })
 
-it('should succesfully query returnsEnum', async () => {
+it('should successfully query returnsEnum', async () => {
   const query = `
   query {
     returnsEnum {
@@ -270,7 +270,7 @@ it('should succesfully query returnsEnum', async () => {
   })
 })
 
-it('should succesfully query returnsArrayInt', async () => {
+it('should successfully query returnsArrayInt', async () => {
   const query = `
   query {
     returnsArrayInt {
@@ -295,7 +295,7 @@ it('should succesfully query returnsArrayInt', async () => {
   })
 })
 
-it('should succesfully query returnsArrayAddresses', async () => {
+it('should successfully query returnsArrayAddresses', async () => {
   const query = `
   query {
     returnsArrayAddresses {
@@ -316,7 +316,7 @@ it('should succesfully query returnsArrayAddresses', async () => {
   })
 })
 
-it('should succesfully query returnsArrayBytes', async () => {
+it('should successfully query returnsArrayBytes', async () => {
   const query = `
   query {
     returnsArrayBytes {
@@ -349,7 +349,7 @@ it('should succesfully query returnsArrayBytes', async () => {
   })
 })
 
-it('should succesfully query returnsSingleByte32', async () => {
+it('should successfully query returnsSingleByte32', async () => {
   const query = `
   query {
     returnsSingleByte32 {
@@ -372,7 +372,7 @@ it('should succesfully query returnsSingleByte32', async () => {
   })
 })
 
-it('should succesfully query returnsOnlyArrays', async () => {
+it('should successfully query returnsOnlyArrays', async () => {
   const query = `
   query {
     returnsOnlyArrays {

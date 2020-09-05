@@ -30,7 +30,12 @@
   "dependencies": {
     "bignumber.js": "^9.0.0",
     "graphql": "^15.3.0",
-    "web3": "^1.2.11"
+    "web3": "^1.2.11",
+    "@openzeppelin/contracts": "^2.5.0",
+    "@studydefi/money-legos": "^2.1.0",
+    "@truffle/hdwallet-provider": "^1.0.34",
+    "dotenv": "^8.2.0",
+    "ethers": "^4.0.46"
   },
   "devDependencies": {
     "@truffle/contract": "^4.2.21",
@@ -38,12 +43,14 @@
     "babel-preset-stage-0": "^6.24.1",
     "express": "^4.17.1",
     "express-graphql": "^0.11.0",
-    "ganache-cli": "^6.10.1",
-    "jest": "^26.4.2",
     "nodemon": "^2.0.4",
     "prettier": "^2.1.1",
     "standard": "^10.0.2",
-    "truffle-contract": "^4.0.0-beta.0"
+    "truffle-contract": "^4.0.0-beta.0",
+    "ganache-cli": "^6.9.1",
+    "ganache-core": "^2.10.2",
+    "jest": "^25.4.0",
+    "truffle": "^5.1.22"
   },
   "standard": {
     "globals": [
