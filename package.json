@@ -1,17 +1,21 @@
 {
-  "name": "ethereum-to-graphql",
-  "version": "0.3.0",
+  "name": "solidity-to-graphql",
+  "version": "0.4.0",
   "description": "Create a graphql server to Ethereum smart contracts",
   "main": "lib/index.js",
   "scripts": {
     "start": "node server.js",
-    "build-sc": "truffle migrate --network development --reset",
+    "build-sc": "truffle migrate --config truffle-config.js --network besu --reset",
+    "testnet": "truffle migrate --config truffle-config.js --network besu",
+    "compile": "truffle compile",
+    "local": "ganache-cli",
     "test": "jest test/*",
+    "down": "sudo kill $(lsof -t -i:8545)",
     "lint": "eslint ."
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hellosugoi/Ethereum-to-GraphQL"
+    "url": "git+https://github.com/sambacha/Solidity-to-GraphQL"
   },
   "keywords": [
     "Node.js",
@@ -19,14 +23,21 @@
     "GraphQL",
     "Express",
     "Apollo",
-    "Meteor"
+    "Meteor",
+    "Solidity",
+    "ERC20",
+    "API",
+    "TheGraph",
+    "GraphProtocol",
+    "Ethereum",
+    "Defi"
   ],
   "author": "Angello Pozo <angello@hellosugoi.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/hellosugoi/Ethereum-to-GraphQL/issues"
+    "url": "https://github.com/sambacha/Solidity-to-GraphQLL/issues"
   },
-  "homepage": "https://github.com/hellosugoi/Ethereum-to-GraphQL#readme",
+  "homepage": "https://github.com/sambacha/Solidity-to-GraphQL#readme",
   "dependencies": {
     "@openzeppelin/contracts": "^2.5.0",
     "@studydefi/money-legos": "^2.1.0",
