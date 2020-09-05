@@ -1,16 +1,22 @@
-# Ethereum ABI to GraphQL Scheme
+# Solidity ABI to GraphQL Scheme
+
+[![Build Status](https://travis-ci.com/sambacha/Ethereum-to-GraphQL.svg?branch=master)](https://travis-ci.com/sambacha/Ethereum-to-GraphQL)
 
 This will consume an ABI object created when deploying a Solidity/Viper/Serpent Smart contract, and return a graphql schema and resolver. This object can be plugged into a the graphql server of your choice.
 
+## Notice
 
-# Usage:
+This is a fork from the original `Ethereum-to-GraphQL` - it contains updates to dependencies, some additional tooling but is laregly the same in terms of functionality. I have updated the contracts, run-scripts, and integrated additional graphql resources (e.g. Apollo Server).
+
+## Usage
 
 Install the package with npm or yarn.
-1. `npm install ethereum-to-graphql`
-2. `yarn add ethereum-to-graphql`
+
+1. `npm install solidity-to-graphql`
+2. `yarn add solidity-to-graphql`
 
 Once installed, you have to create your own graphql server. This means you pass in the original Artifact created by truffle, and the constructed contract from `truffle-contract`.
-This package will retrun the schema and rootValue that you can pass into your GraphQL server. An example is shown below.
+This package will return the schema and rootValue that you can pass into your GraphQL server. An example is shown below.
 
 ```javascript
 const express = require('express')
@@ -42,12 +48,11 @@ Only for Development purposes!`
 ))
 ```
 
-
 ## Base Types
 
-We have two base types that help us convert some Ethereum int/uint and Bytes into graphQL schema types. The first is for ints/uints. Whenver a function returns these types, you will have the option of returning either the string and/or int type.
+We have two base types that help us convert some Ethereum int/uint and Bytes into graphQL schema types. The first is for ints/uints. Whenever a function returns these types, you will have the option of returning either the string and/or int type.
 
-```
+```js
 type Value {
     string: String
     int: Int
@@ -56,15 +61,14 @@ type Value {
 
 The second base type are the bytes types.
 
-```
+```js
 type Bytes {
   raw: String
   decoded: String
 }
 ```
 
-When a function returns a bytes, you can chooose to return the raw data or the decoded data if desired.
-
+When a function returns a bytes, you can choose to return the raw data or the decoded data if desired.
 
 ## Return Type Templates
 
@@ -75,12 +79,11 @@ Because we are auto generating the Schema, we have to define some standard conve
 
 If you return an address as the third return value you would use: `address_2`. If you return a uint in the fourth value you would use `uint256_3`. If you return an array of bytes as the first return you would use `bytes32Arr_0`.
 
-
 ## Writing Queries
 
 To write a query, you must use the function name as the base, pass any variables if any, and then the type name with an index (`${typeName}_${IndexOfOutput}`)
 
-```
+```solidity
 // Solidity
 function getBalanceInEth(address addr) public returns(uint) {
   return ConvertLib.convert(getBalance(addr), 2);
@@ -108,19 +111,20 @@ function getBalanceInEth(address addr) public returns(uint) {
   }
 }
 ```
-Our `getBalanceInEth` function in solidity returns a uint (alias for uint256) as the first and only value. Therefore we  the `uint256_0` key name for that input. As described in our base types above, we can select the string or int types.
 
+Our `getBalanceInEth` function in solidity returns a uint (alias for uint256) as the first and only value. Therefore we  the `uint256_0` key name for that input. As described in our base types above, we can select the string or int types.
 
 We also handle multiple returns and arrays. The additional type change for arrays is the addition of `Arr` to the query type template (`${typeName}Arr_${IndexOfOutput}`). For example, if you return an array of ints as the second return, the schema name is `uint256Arr_1`. A Larger example is below.
 
-
-```
+```solidity
 // Solidity
 function returnsOnlyArrays() public view returns(int[], address[], bytes32[]) {
   // ...removed
   return (Arr1, Arr2, Arr3);
 }
+```
 
+```graphql
 // GraphQL Query
 {
   query {
@@ -174,32 +178,45 @@ function returnsOnlyArrays() public view returns(int[], address[], bytes32[]) {
 
 For more examples check out the tests for more examples.
 
-# Developing Process (If you want to contribute!)
+## Contributing
+
+TODO
 
 ### Required packages
 
 To help develop, you will need to have [truffle](https://github.com/trufflesuite/truffle) globally installed. You will also need a fake Ethereum node. Either [ganache](https://github.com/trufflesuite/ganache) or [ganache-cli](https://github.com/trufflesuite/ganache-cli) work fine.
 
-## Testing
+### Testing
 
 There are 3 components to testing/developing for this repo: Smart Contracts, Ganache/Ganache-cli, and Jest. To test, you have to first launch Ganache/Ganache-cli, then Deploy your smart contracts via `npm run build-sc`, and lastly you run `npm run test`. You only have to do `npm run build-sc` if you modify the smart contract, or if you restarted you Ganache/Ganache-cli command. If you only modify the javascript code, then you do `npm run test` to run tests.
 
 Special note about ganache/ganache-cli, they start on different ports (8545, 9545) respectively. The test suit has been configured to work with ganache the app. The default account in ganache is staticly set to `0x8B5D608836459Ddb0725C64036569c7630a82FBF`. If you use ganache-cli, you will need to set the correct account in `test/intro.test.js` line 8.
 
 #### Starting fresh or ganache restart/refresh
+
+TODO: update new process of running these examples
+
 1. **Start Ganache**
 2. `npm run build-sc`
 3. `npm run test`
 
 #### Modified the Smart Contracts
 **Ganache is running already**
+
 1. `npm run build-sc`
 2. `npm run test`
 
 #### Modified only Javascript and already did fresh start
 **Ganache is running already**
+
 1. `npm run test`
 
 ## GraphiQl for Testing
 
 There is also a gaphiQL server in this repo. You run in by calling `npm run start`. This will allow you to test graqphQL queries locally at `localhost:4000/graphql`
+
+## License
+
+SPDX-License-Identifier: MIT
+
+This remains under the existing MIT license
