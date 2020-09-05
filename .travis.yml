@@ -1,9 +1,10 @@
 --- 
+os: linux
+dist: bionic
 language: node_js
 node_js:
   - 10
   - 12
-sudo: true
 
 git: 
   quiet: true
