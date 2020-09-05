@@ -13,4 +13,4 @@ install:
   - npm install 
   
 script: 
-  - echo "npm test temporarily disabled"
+  - echo "npm test temporarily disabled" && ./.series-ci.sh
