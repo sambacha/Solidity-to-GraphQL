@@ -1,5 +1,6 @@
 const { graphql } = require('graphql')
-const TFcontract = require('truffle-contract')
+// const TFcontract = require('truffle-contract')
+const TFcontract = require('@truffle/contract')
 const MetaCoinArtifact = require('../build/contracts/Metacoin')
 const MetaCoinContract = TFcontract(MetaCoinArtifact)
 const Web3 = require('web3')
