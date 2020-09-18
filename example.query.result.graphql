@@ -1,0 +1,19 @@
+{
+  "errors": [
+    {
+      "message": "Error: MetaCoin has not been deployed to detected network (network/artifact mismatch)",
+      "locations": [
+        {
+          "line": 2,
+          "column": 5
+        }
+      ],
+      "path": [
+        "getBalanceInEth"
+      ]
+    }
+  ],
+  "data": {
+    "getBalanceInEth": null
+  }
+}

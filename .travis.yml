@@ -1,0 +1,16 @@
+--- 
+os: linux
+dist: bionic
+language: node_js
+node_js:
+  - 10
+  - 12
+
+git: 
+  quiet: true
+
+install: 
+  - npm install 
+  
+script: 
+  - echo "npm test temporarily disabled" && ./.series-ci.sh

@@ -1,17 +1,21 @@
 {
-  "name": "ethereum-to-graphql",
-  "version": "0.3.0",
+  "name": "solidity-to-graphql",
+  "version": "0.4.0",
   "description": "Create a graphql server to Ethereum smart contracts",
   "main": "lib/index.js",
   "scripts": {
     "start": "node server.js",
-    "build-sc": "truffle migrate --network development --reset",
+    "build-sc": "truffle migrate --config truffle-config.js --network besu --reset",
+    "testnet": "truffle migrate --config truffle-config.js --network besu",
+    "compile": "truffle compile",
+    "local": "ganache-cli",
     "test": "jest test/*",
+    "down": "sudo kill $(lsof -t -i:8545)",
     "lint": "eslint ."
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hellosugoi/Ethereum-to-GraphQL"
+    "url": "git+https://github.com/sambacha/Solidity-to-GraphQL"
   },
   "keywords": [
     "Node.js",
@@ -19,27 +23,45 @@
     "GraphQL",
     "Express",
     "Apollo",
-    "Meteor"
+    "Meteor",
+    "Solidity",
+    "ERC20",
+    "API",
+    "TheGraph",
+    "GraphProtocol",
+    "Ethereum",
+    "Defi"
   ],
   "author": "Angello Pozo <angello@hellosugoi.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/hellosugoi/Ethereum-to-GraphQL/issues"
+    "url": "https://github.com/sambacha/Solidity-to-GraphQLL/issues"
   },
-  "homepage": "https://github.com/hellosugoi/Ethereum-to-GraphQL#readme",
+  "homepage": "https://github.com/sambacha/Solidity-to-GraphQL#readme",
   "dependencies": {
-    "bignumber.js": "^7.2.1",
-    "graphql": "^0.10.0",
-    "web3": "^1.0.0-beta.35"
+    "@openzeppelin/contracts": "^2.5.0",
+    "@studydefi/money-legos": "^2.1.0",
+    "@truffle/hdwallet-provider": "^1.0.43",
+    "bignumber.js": "^9.0.0",
+    "dotenv": "^8.2.0",
+    "ethers": "^4.0.46",
+    "graphql": "^15.3.0",
+    "web3": "^1.2.11"
   },
   "devDependencies": {
+    "@truffle/contract": "^4.2.21",
     "babel-preset-es2016": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
-    "express": "^4.16.3",
-    "express-graphql": "^0.6.6",
-    "jest": "^23.1.0",
-    "nodemon": "^1.18.4",
+    "coveralls": "^3.1.0",
+    "express": "^4.17.1",
+    "express-graphql": "^0.11.0",
+    "ganache-cli": "^6.9.1",
+    "ganache-core": "^2.10.2",
+    "jest": "^25.4.0",
+    "nodemon": "^2.0.4",
+    "prettier": "^2.1.1",
     "standard": "^10.0.2",
+    "truffle": "^5.1.22",
     "truffle-contract": "^4.0.0-beta.0"
   },
   "standard": {

@@ -1,0 +1,8 @@
+  query {
+    getBalanceInEth(addr: "0xE436eCffC8427939120A9037038CB8C5ff07698b") {
+      uint256_0 {
+        string
+        int
+      }
+    }
+  }
