@@ -10,7 +10,7 @@ const provider = new Web3.providers.HttpProvider('http://localhost:8545')
 // const TFcontract = require('truffle-contract')
 
 const TFcontract = require('@truffle/contract')
-const MetaCoinArtifact = require('./build/contracts/Metacoin')
+const MetaCoinArtifact = require('./build/contracts/MetaCoin')
 const MetCoinContract = TFcontract(MetaCoinArtifact)
 MetCoinContract.setProvider(provider)
 
@@ -20,7 +20,7 @@ const { schema, rootValue } = genGraphQlProperties({ artifact: MetaCoinArtifact,
 const GRAPHQL_PORT = 4000
 
 const app = express();
-app.use('/graphql', 
+app.use('/graphql',
 graphqlHTTP({
   schema,
   rootValue,

@@ -25,7 +25,7 @@ const Web3 = require('web3')
 
 // Configure truffle contract
 const TFcontract = require('truffle-contract')
-const MetaCoinArtifact = require('./build/contracts/Metacoin')
+const MetaCoinArtifact = require('./build/contracts/MetaCoin')
 const MetCoinContract = TFcontract(MetaCoinArtifact)
 MetCoinContract.setProvider(new Web3.providers.HttpProvider('http://localhost:8545'))
 
