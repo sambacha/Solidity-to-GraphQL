@@ -1,6 +1,6 @@
 
 const { genGraphQlProperties } = require('./lib/index')
-const { deploy, mainAccount, web3 } = require('./aion')
+const { deploy, mainAccount, web3 } = require('web3')
 const { ApolloServer } = require('apollo-server')
 const path = require('path')
 const fs = require('fs')
