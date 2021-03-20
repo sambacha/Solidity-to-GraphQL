@@ -1,6 +1,6 @@
 # Solidity ABI to GraphQL Scheme
 
-[![Build Status](https://travis-ci.com/sambacha/Ethereum-to-GraphQL.svg?branch=master)](https://travis-ci.com/sambacha/Ethereum-to-GraphQL)
+[![nodejs](https://github.com/sambacha/Solidity-to-GraphQL/actions/workflows/nodejs.yml/badge.svg)](https://github.com/sambacha/Solidity-to-GraphQL/actions/workflows/nodejs.yml)
 
 This will consume an ABI object created when deploying a Solidity/Viper/Serpent Smart contract, and return a graphql schema and resolver. This object can be plugged into a the graphql server of your choice.
 
